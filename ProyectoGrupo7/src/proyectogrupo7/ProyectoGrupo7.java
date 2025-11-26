@@ -4,6 +4,8 @@
  */
 package proyectogrupo7;
 
+import proyectogrupo7.menus.MenuPrincipal;
+
 /**
  *
  * @author jafet
@@ -14,7 +16,9 @@ public class ProyectoGrupo7 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.menuPHotelero();
     }
     
 }

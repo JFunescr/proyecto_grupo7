@@ -4,10 +4,32 @@
  */
 package proyectogrupo7.clases;
 
-/**
- *
- * @author jafet
- */
+
 public class Habitacion {
-    
+
+    private int numero;
+    private TipoHabitacion tipo;
+    private boolean disponible;
+
+    // Constructor
+    public Habitacion(int numero, TipoHabitacion tipo) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.disponible = true; // Todas inician disponibles
+    }
+
+    // Getters
+    public int getNumero() { return numero; }
+    public TipoHabitacion getTipo() { return tipo; }
+    public boolean isDisponible() { return disponible; }
+
+    // Setters
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    // Mostrar información
+    public String mostrarInfo() {
+        return "Hab #" + numero + " | Tipo: " + tipo + " | Disponible: " + (disponible ? "Sí" : "No");
+    }
 }

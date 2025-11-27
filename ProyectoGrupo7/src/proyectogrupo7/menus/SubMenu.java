@@ -19,6 +19,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
+            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Habitaciones");
@@ -47,6 +48,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
+            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Clientes");
@@ -75,6 +77,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
+            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Todas las Reservas");
@@ -100,6 +103,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
+            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ocupacion del Hotel");

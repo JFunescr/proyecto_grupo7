@@ -30,6 +30,7 @@ public class MenuPrincipal {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
+            //Division de los menus, Aquí no se agrega nada, solo falta agregar la validacion de cliente y de administrador
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Bienvenido al menu de Cliente");

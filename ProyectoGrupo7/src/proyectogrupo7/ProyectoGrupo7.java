@@ -17,6 +17,7 @@ public class ProyectoGrupo7 {
      */
     public static void main(String[] args) {
         
+        //Ejecucion del menu principal
         MenuPrincipal menu = new MenuPrincipal();
         menu.menuPHotelero();
     }

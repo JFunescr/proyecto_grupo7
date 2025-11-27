@@ -14,7 +14,7 @@ public class SubMenu {
     public void menuHabitacion () {
         int opcion = 0;
         do {
-            String [] opciones = {"Ver todas la habitaciones", "Agregar habitaciones nuevas", "Modificar las habitaciones existentes", "Eliminar una habitacion", "Volver al menú principal"};
+            String [] opciones = {"Ver todas la habitaciones", "Agregar habitaciones nuevas", "Modificar las habitaciones existentes", "Eliminar una habitacion", "Volver al Menú Administracion"};
             opcion = JOptionPane.showOptionDialog(null,
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
@@ -42,7 +42,7 @@ public class SubMenu {
     public void menuCliente () {
         int opcion = 0;
         do {
-            String [] opciones = {"Ver lista de clientes", "Registrar nuevos clientes", "Modificar datos de los clientes", "Eliminar cliente", "Volver al menú principal"};
+            String [] opciones = {"Ver lista de clientes", "Registrar nuevos clientes", "Modificar datos de los clientes", "Eliminar cliente", "Volver al Menú Administracion"};
             opcion = JOptionPane.showOptionDialog(null,
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
@@ -70,7 +70,7 @@ public class SubMenu {
     public void menuReserva () {
         int opcion = 0;
         do {
-            String [] opciones = {"Ver Todas las Reservas", "Buscar Reserva por Cliente", "Cancelar Reserva", "Volver al menú principal"};
+            String [] opciones = {"Ver Todas las Reservas", "Buscar Reserva por Cliente", "Cancelar Reserva", "Volver al Menú Administracion"};
             opcion = JOptionPane.showOptionDialog(null,
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
@@ -95,7 +95,7 @@ public class SubMenu {
     public void menuReporte () {
         int opcion = 0;
         do {
-            String [] opciones = {"Ocupacion del Hotel", "Habitaciones Disponibles", "Reservas Activas", "Volver al menú principal"};
+            String [] opciones = {"Ocupacion del Hotel", "Habitaciones Disponibles", "Reservas Activas", "Volver al Menú Administracion"};
             opcion = JOptionPane.showOptionDialog(null,
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);

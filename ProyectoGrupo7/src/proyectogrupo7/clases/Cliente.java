@@ -43,15 +43,13 @@ public class Cliente {
     public void setContacto(int contacto) {
         this.contacto = contacto;
     }
-
+    
+    
     @Override
     public String toString() {
         return "Informacion del Cliente\n" +
                 "\nNombre del Cliente: " + nombre +
                 "\nNumero de Cedula: " + cedula +
                 "\nNumero de Contacto: " + contacto;
-    }
-    
+    }      
 }
-
-

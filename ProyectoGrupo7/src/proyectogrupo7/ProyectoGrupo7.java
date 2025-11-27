@@ -21,8 +21,4 @@ public class ProyectoGrupo7 {
         menu.menuPHotelero();
     }
     
-    
-    
-    
-    
 }

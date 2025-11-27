@@ -11,6 +11,14 @@ import javax.swing.JOptionPane;
  * @author jafet
  */
 public class MenuAdministracion {
+    private SubMenu gestion;
+    
+    public MenuAdministracion() {
+        this.gestion = new SubMenu();
+        
+    }
+    
+    
     public void menuAdministrador () {
         int opcion = 0;
         do {
@@ -21,19 +29,19 @@ public class MenuAdministracion {
             
             switch (opcion) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Habitaciones");
+                    gestion.menuHabitacion();
                     break;
                 
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Clientes");
+                    gestion.menuCliente();
                     break;
                     
                 case 2:
-                    JOptionPane.showMessageDialog(null,"reservaciones");
+                    gestion.menuReserva();
                     break;
                     
                 case 3:
-                    JOptionPane.showMessageDialog(null,"Reportes");
+                    gestion.menuReporte();
                     break;    
             }
         } while (opcion != 4);

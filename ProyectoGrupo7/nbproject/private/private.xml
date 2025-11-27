@@ -3,11 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/joseb/OneDrive/Escritorio/proyectoo/proyecto_grupo7/ProyectoGrupo7/src/proyectogrupo7/ProyectoGrupo7.java</file>
             <file>file:/C:/Users/joseb/OneDrive/Escritorio/proyectoo/proyecto_grupo7/ProyectoGrupo7/src/proyectogrupo7/clases/Cliente.java</file>
             <file>file:/C:/Users/joseb/OneDrive/Escritorio/proyectoo/proyecto_grupo7/ProyectoGrupo7/src/proyectogrupo7/menus/MenuPrincipal.java</file>
             <file>file:/C:/Users/joseb/OneDrive/Escritorio/proyectoo/proyecto_grupo7/ProyectoGrupo7/src/proyectogrupo7/menus/MenuSecundario.java</file>
             <file>file:/C:/Users/joseb/OneDrive/Escritorio/proyectoo/proyecto_grupo7/ProyectoGrupo7/src/proyectogrupo7/menus/MenuAdministracion.java</file>
+=======
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/ProyectoGrupo7.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/menus/MenuPrincipal.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/menus/MenuSecundario.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/menus/MenuAdministracion.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/clases/Habitacion.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/clases/Cliente.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/clases/Reserva.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/sistemahotelero/ConsultaReservasExistentes.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/sistemahotelero/CancelacionReservas.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/sistemahotelero/ActualizacionEstadoHabitaciones.java</file>
+            <file>file:/D:/Trabajos/UNIVERSIDAD/Introducción%20al%20la%20programación/Proyecto/Entrega%202/ProyectoGrupo7/src/proyectogrupo7/enumeradores/Estados.java</file>
+>>>>>>> cbf53e3bf6e13329bb2cfbf47b6c6cebe767e314
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,9 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
+import proyectogrupo7.clases.Habitacion;
+import proyectogrupo7.clases.Reserva;
+import proyectogrupo7.enumeradores.Estados;
 
 /**
  *
@@ -12,30 +15,44 @@ import javax.swing.JOptionPane;
  */
 public class MenuSecundario {
     public void menuCliente () {
+       
         int opcion = 0;
         do {
-            String [] opciones = {"Ver la habitaciones diponibles", "Realizar una reservacion", "Consultar mis reservaciones", "Cancerlar las reservaciones", "Volver al menú principal"};
-            opcion = JOptionPane.showOptionDialog(null,
-            "Seleccione una opcion en el Sistema de Gestion Hotelero",
-            "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
-            
-            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
+            String[] opciones = {
+                "Ver la habitaciones disponibles",
+                "Realizar una reservacion",
+                "Consultar mis reservaciones",
+                "Cancelar las reservaciones",
+                "Volver al menú principal"
+            };
+
+            opcion = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione una opcion en el Sistema de Gestion Hotelero",
+                "Menu de gestion",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+            );
+
             switch (opcion) {
-                case 0:
+                case 0: // Ver habitaciones
                     JOptionPane.showMessageDialog(null, "Habitaciones Disponibles");
                     break;
-                
-                case 1:
-                    JOptionPane.showMessageDialog(null,"Realize una reservacion");
+
+                case 1: // Realizar reservación
+                    JOptionPane.showMessageDialog(null, "Realice una reservacion");
                     break;
-                    
-                case 2:
-                    JOptionPane.showMessageDialog(null,"Consulte sus reservaciones");
+
+                case 2: // Consultar reservaciones
+                    JOptionPane.showMessageDialog(null, "Consulte sus reservaciones");
                     break;
-                    
-                case 3:
-                    JOptionPane.showMessageDialog(null,"Cancele sus reservaciones");
-                    break;    
+
+                case 3: // Cancelar reservación
+                    JOptionPane.showMessageDialog(null, "Cancele sus reservaciones");
+                    break;
             }
         } while (opcion != 4);
     }

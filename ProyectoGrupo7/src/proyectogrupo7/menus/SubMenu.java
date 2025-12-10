@@ -5,12 +5,17 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
+import proyectogrupo7.clases.TipoHabitacion;
+import proyectogrupo7.clases.Habitacion;
 
 /**
  *
  * @author jafet
  */
 public class SubMenu {
+    
+    
+    
     public void menuHabitacion () {
         int opcion = 0;
         do {
@@ -19,10 +24,12 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
-            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
+            //Aquí van las funciones de cada opcion se pueden agregar aquí 
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Habitaciones");
+                    creacionHabitaciones();
+                    
                     break;
                 
                 case 1:
@@ -48,7 +55,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
-            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
+            //Aquí van las funciones de cada opcion se pueden agregar aquí 
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Clientes");
@@ -77,7 +84,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
-            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
+            //Aquí van las funciones de cada opcion se pueden agregar aquí
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Todas las Reservas");
@@ -103,7 +110,7 @@ public class SubMenu {
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
             
-            //Aquí van las funciones de cada opcion se pueden agregar aquí o hacer otra clase para dejar más limpio el menu
+            //Aquí van las funciones de cada opcion se pueden agregar aquí 
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ocupacion del Hotel");
@@ -121,7 +128,35 @@ public class SubMenu {
         } while (opcion != 3);
     }
     
+    public static void creacionHabitaciones() {
+        
+        TipoHabitacion sencilla = new TipoHabitacion("Sencilla", 10000, 1);
+        TipoHabitacion doble = new TipoHabitacion("Doble", 15000, 2);
+        TipoHabitacion triple = new TipoHabitacion("Triple", 20000, 3);
+        TipoHabitacion suite = new TipoHabitacion("Suite", 35000, 4);
+        
+        String habInfo = "Lista de habitaciones:\n\n";
+        
+        for (int i = 1; i <= 20; i++) {
+            TipoHabitacion tipoDesignado;
+            
+            if (i >= 1 && i <= 5) {
+                tipoDesignado = sencilla;
+            } else if (i >= 6 && i <= 10) {
+                tipoDesignado = doble;
+            } else if (i >= 11 && i <= 15) {
+                tipoDesignado = triple;
+            } else {
+                tipoDesignado = suite;
+            }
+            
+            Habitacion hab = new Habitacion(i, tipoDesignado);
+            
+            habInfo += hab.mostrarInfo() + "\n";
+        }
+        
+        JOptionPane.showMessageDialog(null, habInfo, "Habitaciones", JOptionPane.INFORMATION_MESSAGE);
+    }
     
-    
-    
+       
 }

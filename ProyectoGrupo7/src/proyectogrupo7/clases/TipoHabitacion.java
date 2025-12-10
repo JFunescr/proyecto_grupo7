@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
  *
  * @author cerdas
  */
-class TipoHabitacion {
+public class TipoHabitacion {
 
     private String tipo; 
     private double precioPorNoche;

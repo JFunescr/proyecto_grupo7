@@ -4,21 +4,25 @@
  */
 package proyectogrupo7;
 
-import proyectogrupo7.menus.MenuPrincipal;
-
 /**
  *
  * @author jafet
  */
+
+import proyectogrupo7.clases.*;
+import proyectogrupo7.enumeradores.Estados;
+import proyectogrupo7.menus.MenuPrincipal;
+
 public class ProyectoGrupo7 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        
+
+        // Cargar habitaciones iniciales
+        SistemaHotel.agregarHabitacion(new Habitacion(101, Estados.INDIVIDUAL));
+        SistemaHotel.agregarHabitacion(new Habitacion(102, Estados.DOBLE));
+        SistemaHotel.agregarHabitacion(new Habitacion(201, Estados.SUITE));
+
         MenuPrincipal menu = new MenuPrincipal();
         menu.menuPHotelero();
     }
-    
 }

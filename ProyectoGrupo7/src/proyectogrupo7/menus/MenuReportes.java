@@ -39,7 +39,7 @@ public class MenuReportes {
             );
 
             switch (opcion) {
-                case 0: habitacionesDisponibles(); break;
+                case 0: SistemaHotel.habitacionesDisponibles(); break;
                 case 1: reservasActivas(); break;
                 case 2: ingresos(); break;
             }
@@ -47,16 +47,7 @@ public class MenuReportes {
         } while (opcion != 3);
     }
 
-    private void habitacionesDisponibles() {
-        String texto = "Habitaciones disponibles:\n\n";
-
-        for (Habitacion h : SistemaHotel.habitaciones) {
-            if (h != null && h.isDisponible()) {
-                texto += h.toString()+ "\n";
-            }
-        }
-        JOptionPane.showMessageDialog(null, texto);
-    }
+   
 
     private void reservasActivas() {
         String texto = "Reservas activas:\n\n";

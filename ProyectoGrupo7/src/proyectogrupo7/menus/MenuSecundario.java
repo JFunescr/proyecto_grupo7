@@ -9,6 +9,7 @@ import proyectogrupo7.clases.Cliente;
 import proyectogrupo7.clases.Habitacion;
 import proyectogrupo7.clases.Reserva;
 import proyectogrupo7.clases.SistemaHotel;
+import proyectogrupo7.clases.SistemaHotel;
 
 /**
  *
@@ -44,7 +45,7 @@ public class MenuSecundario {
 
             switch (opcion) {
                 case 0:
-                    mostrarHabitacionesDisponibles();
+                    SistemaHotel.habitacionesDisponibles();
                     break;
 
                 case 1:
@@ -61,23 +62,7 @@ public class MenuSecundario {
             }
         } while (opcion != 4);
     }
-    // ------------------------------------------------------------
-    // 1. MOSTRAR HABITACIONES DISPONIBLES
-    // ------------------------------------------------------------
-    private void mostrarHabitacionesDisponibles() {
-
-        String texto = "Habitaciones disponibles:\n\n";
-
-        for (Habitacion h : SistemaHotel.habitaciones) {
-            if (h != null && h.isDisponible()) {
-                texto += "Hab #" + h.getNumero()
-                      + " | Tipo: " + h.getEstado()
-                      + " | Disponible: Sí\n";
-            }
-        }
-
-        JOptionPane.showMessageDialog(null, texto);
-    }
+   
 
     // ------------------------------------------------------------
     // 2. REALIZAR RESERVACIÓN
@@ -137,7 +122,7 @@ public class MenuSecundario {
     }
 
     private Habitacion buscarHabitacion(int numero) {
-        for (Habitacion h : SistemaHotel.habitaciones) {
+        for (Habitacion h : MenuPrincipal.habitaciones) {
             if (h != null && h.getNumero() == numero) {
                 return h;
             }

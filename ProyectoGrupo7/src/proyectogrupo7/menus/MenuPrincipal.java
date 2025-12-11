@@ -5,7 +5,8 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
-
+import proyectogrupo7.clases.Habitacion;
+import proyectogrupo7.menus.SubMenu;
 /**
  *
  * @author jafet
@@ -19,10 +20,13 @@ public class MenuPrincipal {
         this.gestion = new MenuSecundario();
         this.gestion2 = new MenuAdministracion();
     }
+    public static Habitacion[] habitaciones = new Habitacion[30];
+    public static int cantidadHabitaciones = 0;  
     
     
     //Menu principal del hotel
     public void menuPHotelero () {
+        SubMenu.creacionHabitaciones();
         int opcion = 0;
         do {
             String [] opciones = {"Ingresar como Cliente", "Ingresar como Administracion", "Salir del sistema"};

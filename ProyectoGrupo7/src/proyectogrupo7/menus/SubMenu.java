@@ -29,20 +29,26 @@ public class SubMenu {
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Ver Habitaciones");
-                    creacionHabitaciones();
+                    mostrarHabitaciones();
                     
                     break;
                 
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Agrgar Habitaciones");
+                    JOptionPane.showMessageDialog(null,"Agregar Habitaciones");
+                    agregarHabitacion();
+                    
                     break;
                     
                 case 2:
                     JOptionPane.showMessageDialog(null,"Modificar Habitaciones");
+                    
+                    
                     break;
                     
                 case 3:
                     JOptionPane.showMessageDialog(null,"Eliminar Habitacion");
+                    
+                    
                     break;    
             }
         } while (opcion != 4);
@@ -203,35 +209,74 @@ public class SubMenu {
         } while (opcion != 3);
     }
     
+      
+    
     public static void creacionHabitaciones() {
+        
+        if (MenuPrincipal.cantidadHabitaciones > 0) {
+            return;
+        }
         
         TipoHabitacion sencilla = new TipoHabitacion("Sencilla", 10000, 1);
         TipoHabitacion doble = new TipoHabitacion("Doble", 15000, 2);
         TipoHabitacion triple = new TipoHabitacion("Triple", 20000, 3);
         TipoHabitacion suite = new TipoHabitacion("Suite", 35000, 4);
         
-        String habInfo = "Lista de habitaciones:\n\n";
-        
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 10; i++) {
             TipoHabitacion tipoDesignado;
             
-            if (i >= 1 && i <= 5) {
-                tipoDesignado = sencilla;
-            } else if (i >= 6 && i <= 10) {
-                tipoDesignado = doble;
-            } else if (i >= 11 && i <= 15) {
-                tipoDesignado = triple;
-            } else {
-                tipoDesignado = suite;
-            }
+            if (i <= 3 ) tipoDesignado = sencilla;
+            else if (i <= 6) tipoDesignado = doble;
+            else if (i <= 8) tipoDesignado = triple;
+            else tipoDesignado = suite;
             
-            Habitacion hab = new Habitacion(i, tipoDesignado);
+            MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = new Habitacion(i, tipoDesignado);
+            MenuPrincipal.cantidadHabitaciones++;
             
-            habInfo += hab.mostrarInfo() + "\n";
         }
-        
-        JOptionPane.showMessageDialog(null, habInfo, "Habitaciones", JOptionPane.INFORMATION_MESSAGE);
+      
     }
     
-       
+    public static void mostrarHabitaciones() {
+        String infoHab = "Lista de las habitaciones existentes:\n\n";
+        
+        for (int i = 0; i < MenuPrincipal.cantidadHabitaciones; i++) {
+            infoHab += MenuPrincipal.habitaciones[i].mostrarInfo() + "\n\n";
+        }
+        
+        JOptionPane.showMessageDialog(null, infoHab);
+    }
+    
+    public static void agregarHabitacion() {
+        
+        String numeroTexto = JOptionPane.showInputDialog("Ingrese el numero de la nueva habitacion");
+        int numero = Integer.parseInt(numeroTexto);
+                    
+        String [] opciones = {"Sencilla", "Doble", "Triple", "Suite"};
+        int tipoSelec = JOptionPane.showOptionDialog(null, "Seleccione el tipo de habitacion", ".", 
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+        
+        TipoHabitacion tipo;
+        
+        if (tipoSelec == 0) {
+            tipo = new TipoHabitacion("Sencilla", 10000, 1);           
+        } else if (tipoSelec == 1) {
+            tipo = new TipoHabitacion("Doble", 15000, 2);
+        } else if (tipoSelec == 2) {
+            tipo = new TipoHabitacion("Triple", 20000, 3);
+        } else {
+            tipo = new TipoHabitacion("Suite", 35000, 4);
+        }
+        
+        Habitacion nueva = new Habitacion(numero, tipo);
+        MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = nueva;
+        MenuPrincipal.cantidadHabitaciones++;
+        
+        
+        
+        JOptionPane.showMessageDialog(null, "La Habitacion ha sido agregada:\n" + nueva.mostrarInfo(),
+                                            "Habitacion creada", JOptionPane.INFORMATION_MESSAGE);
+                    
+    }
+    
 }

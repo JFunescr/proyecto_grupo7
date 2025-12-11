@@ -66,7 +66,7 @@ public class TipoHabitacion {
     // Para ver los datos
     @Override
     public String toString() {
-        return "Tipo: " + tipo +
+        return " " + tipo +
                 "\nPrecio por Noche: ₡" + precioPorNoche +
                 "\nCapacidad: " + capacidadPersonas + " personas";
     }

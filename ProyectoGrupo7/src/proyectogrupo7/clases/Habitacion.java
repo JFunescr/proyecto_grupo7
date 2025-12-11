@@ -27,7 +27,11 @@ public class Habitacion {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
-
+     
+    public void setTipo(TipoHabitacion tipo) {
+        this.tipo = tipo;
+    }
+    
     // Mostrar información
     public String mostrarInfo() {
         return "Hab #" + numero + " | Tipo: " + tipo + " | Disponible: " + (disponible ? "Sí" : "No");

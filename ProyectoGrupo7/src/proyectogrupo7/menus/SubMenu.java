@@ -5,9 +5,9 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
-import proyectogrupo7.clases.TipoHabitacion;
 import proyectogrupo7.clases.Habitacion;
 import proyectogrupo7.clases.Cliente;
+import proyectogrupo7.enumeradores.Estados;
 
 /**
  *
@@ -97,21 +97,18 @@ public class SubMenu {
                         break;
                     }
 
-                    int cedula = Integer.parseInt(cedulaTexto);
-                    int contacto = Integer.parseInt(contactoTexto);
-
-                    clientes[cantidadClientes] = new Cliente(nombre, cedula, contacto);
+                    clientes[cantidadClientes] = new Cliente(nombre, cedulaTexto, contactoTexto);
                     cantidadClientes++;
                     JOptionPane.showMessageDialog(null, "Cliente registrado.");
                     break;
 
                 case 2: // Modificar
                     String cedulaModTexto = JOptionPane.showInputDialog("Cédula del cliente a modificar:");
-                    int cedulaMod = Integer.parseInt(cedulaModTexto);
+                    String cedulaMod = cedulaModTexto;
 
                     int indice = -1;
                     for (int i = 0; i < cantidadClientes; i++) {
-                        if (clientes[i].getCedula() == cedulaMod) {
+                        if (clientes[i].getCedula().equals(cedulaMod)) {
                             indice = i;
                         }
                     }
@@ -126,14 +123,14 @@ public class SubMenu {
                     int nuevoContacto = Integer.parseInt(nuevoContactoTexto);
 
                     clientes[indice].setNombre(nuevoNombre);
-                    clientes[indice].setContacto(nuevoContacto);
+                    clientes[indice].setTelefono(nuevoContactoTexto);
 
                     JOptionPane.showMessageDialog(null, "Cliente modificado.");
                     break;
 
                 case 3: // Eliminar
                     String cedulaEliminarTexto = JOptionPane.showInputDialog("Cédula del cliente a eliminar:");
-                    int cedulaEliminar = Integer.parseInt(cedulaEliminarTexto);
+                    String cedulaEliminar = cedulaEliminarTexto;
 
                     int pos = -1;
                     for (int i = 0; i < cantidadClientes; i++) {
@@ -217,20 +214,22 @@ public class SubMenu {
             return;
         }
         
-        TipoHabitacion sencilla = new TipoHabitacion("Sencilla", 10000, 1);
-        TipoHabitacion doble = new TipoHabitacion("Doble", 15000, 2);
-        TipoHabitacion triple = new TipoHabitacion("Triple", 20000, 3);
-        TipoHabitacion suite = new TipoHabitacion("Suite", 35000, 4);
+        Estados sencilla = Estados.INDIVIDUAL;
+        Estados doble = Estados.DOBLE;
+        Estados triple = Estados.TRIPLE;
+        Estados suite = Estados.SUITE;
         
         for (int i = 1; i <= 10; i++) {
-            TipoHabitacion tipoDesignado;
+            Estados estado;
+            double precio;
+            int capacidad;
             
-            if (i <= 3 ) tipoDesignado = sencilla;
-            else if (i <= 6) tipoDesignado = doble;
-            else if (i <= 8) tipoDesignado = triple;
-            else tipoDesignado = suite;
+            if (i <= 3 ) estado = sencilla;
+            else if (i <= 6) estado = doble;
+            else if (i <= 8) estado = triple;
+            else estado = suite;
             
-            MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = new Habitacion(i, tipoDesignado);
+            MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = new Habitacion(i, estado, precio, capacidad);
             MenuPrincipal.cantidadHabitaciones++;
             
         }
@@ -241,7 +240,7 @@ public class SubMenu {
         String infoHab = "Lista de las habitaciones existentes:\n\n";
         
         for (int i = 0; i < MenuPrincipal.cantidadHabitaciones; i++) {
-            infoHab += MenuPrincipal.habitaciones[i].mostrarInfo() + "\n\n";
+            infoHab += MenuPrincipal.habitaciones[i].toString() + "\n\n";
         }
         
         JOptionPane.showMessageDialog(null, infoHab);
@@ -256,25 +255,39 @@ public class SubMenu {
         int tipoSelec = JOptionPane.showOptionDialog(null, "Seleccione el tipo de habitacion", ".", 
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
         
-        TipoHabitacion tipo;
+       Estados estado;
+       double precio;
+       int capacidad;
         
         if (tipoSelec == 0) {
-            tipo = new TipoHabitacion("Sencilla", 10000, 1);           
+            estado = Estados.INDIVIDUAL;     
+            precio = 10000;
+            capacidad = 1;
+            
         } else if (tipoSelec == 1) {
-            tipo = new TipoHabitacion("Doble", 15000, 2);
+            estado = Estados.DOBLE;     
+            precio = 15000;
+            capacidad = 2;
+            
         } else if (tipoSelec == 2) {
-            tipo = new TipoHabitacion("Triple", 20000, 3);
+            estado = Estados.TRIPLE;     
+            precio = 20000;
+            capacidad = 3;
+            
         } else {
-            tipo = new TipoHabitacion("Suite", 35000, 4);
+            estado = Estados.SUITE;     
+            precio = 35000;
+            capacidad = 4;
+            
         }
         
-        Habitacion nueva = new Habitacion(numero, tipo);
+        Habitacion nueva = new Habitacion(numero, estado, precio, capacidad);
         MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = nueva;
         MenuPrincipal.cantidadHabitaciones++;
         
         
         
-        JOptionPane.showMessageDialog(null, "La Habitacion ha sido agregada:\n" + nueva.mostrarInfo(),
+        JOptionPane.showMessageDialog(null, "La Habitacion ha sido agregada:\n" + nueva.toString(),
                                             "Habitacion creada", JOptionPane.INFORMATION_MESSAGE);
                     
     }
@@ -299,7 +312,7 @@ public class SubMenu {
         }
         
         String[] opciones = {"Cambiar el tipo de Habitacion", "Cambiar su disponibilidad", "Cambiar el precio", "Volver al Menu"};
-        int eleccion = JOptionPane.showOptionDialog(null, "Habitacion encontrada:\n" + encontrada.mostrarInfo() + "\nSeleccione la informacion que desea editar:" ,
+        int eleccion = JOptionPane.showOptionDialog(null, "Habitacion encontrada:\n" + encontrada.toString() + "\nSeleccione la informacion que desea editar:" ,
                                                     "Editar Habitacion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
         
         if (eleccion == 0) {
@@ -308,14 +321,14 @@ public class SubMenu {
             int seleccion = JOptionPane.showOptionDialog(null, "Seleccione la nueva categoria", "Tipos", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                                                         null, tiposDesignar, tiposDesignar[0]);
             
-            TipoHabitacion nuevoTipo;
+            Estados nuevoEstado;
             
-            if (seleccion == 0) nuevoTipo = new TipoHabitacion("Senciila", 10000, 1);
-            else if (seleccion == 1) nuevoTipo = new TipoHabitacion("Doble", 15000, 2);
-            else if (seleccion == 2) nuevoTipo = new TipoHabitacion("Triple", 20000, 3);
-            else nuevoTipo = new TipoHabitacion("Suite", 35000, 4);
+            if (seleccion == 0) nuevoEstado = Estados.INDIVIDUAL;
+            else if (seleccion == 1) nuevoEstado = Estados.DOBLE;
+            else if (seleccion == 2) nuevoEstado = Estados.TRIPLE;
+            else nuevoEstado = Estados.SUITE;
             
-            encontrada.setTipo(nuevoTipo);
+            encontrada.setEstado(nuevoEstado);
             
             JOptionPane.showMessageDialog(null, "Tipo actualizado correctamente");
         }   
@@ -333,7 +346,7 @@ public class SubMenu {
         
         else if (eleccion == 2) {
             
-            String nuevoPrecioTexto = JOptionPane.showInputDialog("Precio actual: ₡" + encontrada.getTipo().getPrecioPorNoche() + "\n Ingrese el nuevo precio de la habitacion:");
+            String nuevoPrecioTexto = JOptionPane.showInputDialog("Precio actual: ₡" + encontrada.getPrecioPorNoche() + "\n Ingrese el nuevo precio de la habitacion:");
             
             double nuevoPrecio = Double.parseDouble(nuevoPrecioTexto);
             
@@ -342,12 +355,8 @@ public class SubMenu {
                 return;
             }
             
-            TipoHabitacion vieja = encontrada.getTipo();
+            encontrada.setPrecioPorNoche(nuevoPrecio);
             
-            TipoHabitacion nueva = new TipoHabitacion(
-                vieja.getTipo(), nuevoPrecio, vieja.getCapacidadPersonas());
-            
-            encontrada.setTipo(nueva);
             JOptionPane.showMessageDialog(null, "Precio actualizado de forma correcta");
         }
         

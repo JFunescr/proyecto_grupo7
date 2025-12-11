@@ -5,6 +5,7 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
+import proyectogrupo7.clases.Cliente;
 import proyectogrupo7.clases.Habitacion;
 import proyectogrupo7.menus.SubMenu;
 /**
@@ -12,45 +13,50 @@ import proyectogrupo7.menus.SubMenu;
  * @author jafet
  */
 public class MenuPrincipal {
-    private MenuSecundario gestion;
-    private MenuAdministracion gestion2;
     
+    private MenuSecundario menuSecundario = new MenuSecundario();
+    private MenuAdministracion menuAdministracion = new MenuAdministracion();
+    private MenuReportes reportes = new MenuReportes();
     
-    public MenuPrincipal() {
-        this.gestion = new MenuSecundario();
-        this.gestion2 = new MenuAdministracion();
-    }
     public static Habitacion[] habitaciones = new Habitacion[30];
     public static int cantidadHabitaciones = 0;  
     
     
     //Menu principal del hotel
     public void menuPHotelero () {
+        
+        //Creacion habitaciones al iniciar el sistema
         SubMenu.creacionHabitaciones();
         int opcion = 0;
         do {
-            String [] opciones = {"Ingresar como Cliente", "Ingresar como Administracion", "Salir del sistema"};
+            String [] opciones = {"Menu Cliente", "Menu Administracion", "Reportes", "Salir del sistema"};
             opcion = JOptionPane.showOptionDialog(null,
-            "Seleccione una opcion en el Sistema de Gestion Hotelero",
-            "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
-            
-            //Division de los menus, Aquí no se agrega nada, solo falta agregar la validacion de cliente y de administrador
+            "Sistema de Gestion Hotelero",
+            "Menu Principal", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
+        
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Bienvenido al menu de Cliente");
-                    gestion.menuCliente();
+                    
+                    Cliente cliente = null;
+                    
+                    String nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre completo");
+                    String cedula = JOptionPane.showInputDialog(null, "Ingrese su numero de cédula");
+                    String contacto = JOptionPane.showInputDialog(null, "Ingrese su numero de contacto");
+
+                    cliente = new Cliente(nombre, cedula, contacto);
+                    JOptionPane.showMessageDialog(null, cliente);
+                    menuSecundario.menuCliente();
                     break;
                 
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Bienvenido al menu de Administracion");
-                    gestion2.menuAdministrador();
-                    break;    
+                    menuAdministracion.menuAdministrador();
+                    break;
+                    
+                case 2:
+                    reportes.menuReportes();
+                    break;
             }
-        
-        } while (opcion != 2);
-        
-    }
-    
-    
-    
-}
+        } while (opcion != 3);
+    }    
+}    

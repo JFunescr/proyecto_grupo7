@@ -9,5 +9,6 @@ public enum Estados {
     
     INDIVIDUAL,
     DOBLE,
+    TRIPLE,
     SUITE
 }

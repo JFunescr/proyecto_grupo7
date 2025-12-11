@@ -5,6 +5,7 @@
 package proyectogrupo7.menus;
 
 import javax.swing.JOptionPane;
+import proyectogrupo7.clases.Cliente;
 
 /**
  *
@@ -33,6 +34,16 @@ public class MenuPrincipal {
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Bienvenido al menu de Cliente");
+                    
+                    Cliente cliente = null;
+                    
+                    String nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre completo");
+                    int cedula = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su numero de cédula"));
+                    int contacto = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su numero de contacto"));
+
+                    cliente = new Cliente(nombre, cedula, contacto);
+                    JOptionPane.showMessageDialog(null, cliente);
+
                     gestion.menuCliente();
                     break;
                 

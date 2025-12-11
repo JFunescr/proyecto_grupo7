@@ -50,6 +50,6 @@ public class Cliente {
         return "Informacion del Cliente\n" +
                 "\nNombre del Cliente: " + nombre +
                 "\nNumero de Cedula: " + cedula +
-                "\nNumero de Contacto: " + telefono;
+                "\nNumero de Telefono: " + telefono;
     }        
 }

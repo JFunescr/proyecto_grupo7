@@ -52,7 +52,7 @@ public class MenuReportes {
 
         for (Habitacion h : SistemaHotel.habitaciones) {
             if (h != null && h.isDisponible()) {
-                texto += h.mostrarInfo() + "\n";
+                texto += h.toString()+ "\n";
             }
         }
         JOptionPane.showMessageDialog(null, texto);

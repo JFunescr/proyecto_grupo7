@@ -28,27 +28,20 @@ public class SubMenu {
             //Aquí van las funciones de cada opcion se pueden agregar aquí 
             switch (opcion) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Ver Habitaciones");
                     mostrarHabitaciones();
-                    
                     break;
                 
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Agregar Habitaciones");
                     agregarHabitacion();
-                    
                     break;
                     
                 case 2:
-                    JOptionPane.showMessageDialog(null,"Modificar Habitaciones");
                     editarHabitacion();
                     
                     break;
                     
                 case 3:
-                    JOptionPane.showMessageDialog(null,"Eliminar Habitacion");
-                    
-                    
+                    eliminarHabitacion();
                     break;    
             }
         } while (opcion != 4);
@@ -89,7 +82,7 @@ public class SubMenu {
 
                     String nombre = JOptionPane.showInputDialog("Nombre:");
                     String cedulaTexto = JOptionPane.showInputDialog("Cédula:");
-                    String contactoTexto = JOptionPane.showInputDialog("Contacto:");
+                    String contactoTexto = JOptionPane.showInputDialog("Telefono:");
 
                     if (nombre == null || nombre.equals("") || cedulaTexto == null || cedulaTexto.equals("") ||contactoTexto == null ||
                         contactoTexto.equals("")) {
@@ -119,7 +112,7 @@ public class SubMenu {
                     }
 
                     String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
-                    String nuevoContactoTexto = JOptionPane.showInputDialog("Nuevo contacto:");
+                    String nuevoContactoTexto = JOptionPane.showInputDialog("Nuevo Telefono:");
                     int nuevoContacto = Integer.parseInt(nuevoContactoTexto);
 
                     clientes[indice].setNombre(nuevoNombre);
@@ -134,8 +127,9 @@ public class SubMenu {
 
                     int pos = -1;
                     for (int i = 0; i < cantidadClientes; i++) {
-                        if (clientes[i].getCedula() == cedulaEliminar) {
+                        if (clientes[i].getCedula().equals(cedulaEliminar)) {
                             pos = i;
+                            break;
                         }
                     }
                     if (pos == -1) {
@@ -214,7 +208,7 @@ public class SubMenu {
             return;
         }
         
-        Estados sencilla = Estados.INDIVIDUAL;
+        Estados individual = Estados.INDIVIDUAL;
         Estados doble = Estados.DOBLE;
         Estados triple = Estados.TRIPLE;
         Estados suite = Estados.SUITE;
@@ -224,10 +218,23 @@ public class SubMenu {
             double precio;
             int capacidad;
             
-            if (i <= 3 ) estado = sencilla;
-            else if (i <= 6) estado = doble;
-            else if (i <= 8) estado = triple;
-            else estado = suite;
+            if (i <= 3 ) {
+                estado = individual;
+                precio = 10000;
+                capacidad = 1;
+            } else if (i <= 6) {
+                estado = doble;
+                precio = 15000;
+                capacidad = 2;
+            } else if (i <= 8) {
+                estado = triple;
+                precio = 20000;
+                capacidad = 3;
+            } else {
+                estado = suite;
+                precio = 35000;
+                capacidad = 4;
+            }
             
             MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones] = new Habitacion(i, estado, precio, capacidad);
             MenuPrincipal.cantidadHabitaciones++;
@@ -317,7 +324,7 @@ public class SubMenu {
         
         if (eleccion == 0) {
             
-            String[] tiposDesignar = {"Sencilla", "Doble", "Triple", "Suite"};
+            String[] tiposDesignar = {"Individual", "Doble", "Triple", "Suite"};
             int seleccion = JOptionPane.showOptionDialog(null, "Seleccione la nueva categoria", "Tipos", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                                                         null, tiposDesignar, tiposDesignar[0]);
             
@@ -363,8 +370,45 @@ public class SubMenu {
         else {
             return;
         }
+           
+        }
+        
+        
+    public static void eliminarHabitacion() {
+            
+        String numeroTexto = JOptionPane.showInputDialog("Ingrese el numero de la habitacion que desea eliminar");
+            
+        if (numeroTexto == null || numeroTexto.equals("")) {
+            JOptionPane.showMessageDialog(null, "Numero de habitacion invalido");
+            return;
+        }
+        
+        int numeroEliminar = Integer.parseInt(numeroTexto);
+        int pos = -1;
+        
+        for (int i = 0; i < MenuPrincipal.cantidadHabitaciones; i++) {
+            if (MenuPrincipal.habitaciones[i].getNumero() == numeroEliminar) {
+                pos = i;
+                break;
+            }
+        }
+        
+        if (pos == -1) {
+            JOptionPane.showMessageDialog(null, "No se encontró una habitacion con ese numero de identificacion");
+            return;
+        }
+        
+        for (int i = pos; i < MenuPrincipal.cantidadHabitaciones - 1; i++) {
+            MenuPrincipal.habitaciones[i] = MenuPrincipal.habitaciones[i + 1];
+        } 
+        
+        MenuPrincipal.habitaciones[MenuPrincipal.cantidadHabitaciones - 1] = null;
+        MenuPrincipal.cantidadHabitaciones--;
+        
+        JOptionPane.showMessageDialog(null, "Habitacion eliminada correctamente");
         
     }
     
-    
 }
+    
+

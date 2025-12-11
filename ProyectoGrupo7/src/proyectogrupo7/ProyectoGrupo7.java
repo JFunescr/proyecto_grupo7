@@ -4,10 +4,8 @@
  */
 package proyectogrupo7;
 
-import proyectogrupo7.clases.Habitacion;
-import proyectogrupo7.clases.SistemaHotel;
-import proyectogrupo7.enumeradores.Estados;
 import proyectogrupo7.menus.MenuPrincipal;
+import proyectogrupo7.menus.SubMenu;
 
 /**
  *
@@ -21,10 +19,7 @@ public class ProyectoGrupo7 {
     public static void main(String[] args) {
 
         // Cargar habitaciones iniciales
-        SistemaHotel.agregarHabitacion(new Habitacion(101, Estados.INDIVIDUAL));
-        SistemaHotel.agregarHabitacion(new Habitacion(102, Estados.DOBLE));
-        SistemaHotel.agregarHabitacion(new Habitacion(201, Estados.SUITE));
-
+        SubMenu.creacionHabitaciones();
          //Ejecucion del menu principal
         MenuPrincipal menu = new MenuPrincipal();
         menu.menuPHotelero();

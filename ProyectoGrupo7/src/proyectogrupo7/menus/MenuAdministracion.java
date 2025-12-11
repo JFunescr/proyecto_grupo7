@@ -22,7 +22,7 @@ public class MenuAdministracion {
     public void menuAdministrador () {
         int opcion = 0;
         do {
-            String [] opciones = {"Gestionar las habitaciones", "Gestionar los clientes", "Gestionar las reservas", "Reportes del hotel OPCIONAL", "Volver al menú principal"};
+            String [] opciones = {"Gestionar las habitaciones", "Gestionar los clientes", "Gestionar las reservas", "Volver al menú principal"};
             opcion = JOptionPane.showOptionDialog(null,
             "Seleccione una opcion en el Sistema de Gestion Hotelero",
             "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
@@ -40,11 +40,8 @@ public class MenuAdministracion {
                 case 2:
                     gestion.menuReserva();
                     break;
-                    
-                case 3:
-                    gestion.menuReporte();
-                    break;    
+                
             }
-        } while (opcion != 4);
+        } while (opcion != 3);
     }
 }

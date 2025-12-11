@@ -29,6 +29,15 @@ public class Reserva {
     public double getMonto() { return monto; }
     public boolean isActiva() { return activa; }
 
+    public String getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public String getFechaSalida() {
+        return fechaSalida;
+    }
+
+    
     public void cancelar() {
         this.activa = false;
         habitacion.setDisponible(true);

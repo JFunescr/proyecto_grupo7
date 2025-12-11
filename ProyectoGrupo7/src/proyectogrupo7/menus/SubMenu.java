@@ -7,8 +7,10 @@ package proyectogrupo7.menus;
 import javax.swing.JOptionPane;
 import proyectogrupo7.clases.Habitacion;
 import proyectogrupo7.clases.Cliente;
+import proyectogrupo7.clases.Reserva;
 import proyectogrupo7.clases.SistemaHotel;
 import proyectogrupo7.enumeradores.Estados;
+
 
 /**
  *
@@ -50,8 +52,11 @@ public class SubMenu {
     
     public void menuCliente () {
         
-        Cliente[] clientes = new Cliente[30];
-        int cantidadClientes = 0;
+        //Cliente[] clientes = new Cliente[30];
+        //int cantidadClientes = 0;
+        
+        Cliente[] clientes = SistemaHotel.clientes;
+        int cantidadClientes = SistemaHotel.cantidadClientes;
 
         int opcion = 0;
         do {
@@ -68,8 +73,8 @@ public class SubMenu {
                         JOptionPane.showMessageDialog(null, "No hay clientes registrados.");
                     } else {
                         String texto = "Lista de clientes:\n\n";
-                        for (int i = 0; i < cantidadClientes; i++) {
-                            texto += clientes[i].toString() + "\n\n";
+                        for (int i = 0; i < SistemaHotel.cantidadClientes; i++) {
+                            texto += SistemaHotel.clientes[i].toString() + "\n\n";
                         }
                         JOptionPane.showMessageDialog(null, texto);
                     }
@@ -91,8 +96,12 @@ public class SubMenu {
                         break;
                     }
 
-                    clientes[cantidadClientes] = new Cliente(nombre, cedulaTexto, contactoTexto);
-                    cantidadClientes++;
+                    
+                    Cliente clienteNuevo = new Cliente(nombre, cedulaTexto, contactoTexto);
+                    
+                    SistemaHotel.clientes[SistemaHotel.cantidadClientes] = clienteNuevo;
+                    SistemaHotel.cantidadClientes++;
+                    
                     JOptionPane.showMessageDialog(null, "Cliente registrado.");
                     break;
 
@@ -101,9 +110,10 @@ public class SubMenu {
                     String cedulaMod = cedulaModTexto;
 
                     int indice = -1;
-                    for (int i = 0; i < cantidadClientes; i++) {
-                        if (clientes[i].getCedula().equals(cedulaMod)) {
+                    for (int i = 0; i < SistemaHotel.cantidadClientes; i++) {
+                        if (SistemaHotel.clientes[i].getCedula().equals(cedulaMod)) {
                             indice = i;
+                            break;
                         }
                     }
 
@@ -127,8 +137,8 @@ public class SubMenu {
                     String cedulaEliminar = cedulaEliminarTexto;
 
                     int pos = -1;
-                    for (int i = 0; i < cantidadClientes; i++) {
-                        if (clientes[i].getCedula().equals(cedulaEliminar)) {
+                    for (int i = 0; i < SistemaHotel.cantidadClientes; i++) {
+                        if (SistemaHotel.clientes[i].getCedula().equals(cedulaEliminar)) {
                             pos = i;
                             break;
                         }
@@ -137,11 +147,11 @@ public class SubMenu {
                         JOptionPane.showMessageDialog(null, "Cliente no encontrado.");
                         break;
                     }
-                    for (int i = pos; i < cantidadClientes - 1; i++) {
-                        clientes[i] = clientes[i + 1];
+                    for (int i = pos; i < SistemaHotel.cantidadClientes - 1; i++) {
+                        SistemaHotel.clientes[i] = SistemaHotel.clientes[i + 1];
                     }
-                    clientes[cantidadClientes - 1] = null;
-                    cantidadClientes--;
+                    SistemaHotel.clientes[SistemaHotel.cantidadClientes - 1] = null;
+                    SistemaHotel.cantidadClientes--;
 
                     JOptionPane.showMessageDialog(null, "Cliente eliminado.");
                     break;    
@@ -160,49 +170,27 @@ public class SubMenu {
             //Aquí van las funciones de cada opcion se pueden agregar aquí
             switch (opcion) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Ver Todas las Reservas");
+                    //JOptionPane.showMessageDialog(null, "Ver Todas las Reservas");
+                    MenuReportes m = new MenuReportes();
+                    m.reservasActivas();
                     break;
                 
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Buscar Reserva por Cliente");
+                    //JOptionPane.showMessageDialog(null,"Buscar Reserva por Cliente");
+                    MenuSecundario ms= new MenuSecundario();
+                    ms.consultarReservasCliente();
                     break;
                     
                 case 2:
-                    JOptionPane.showMessageDialog(null,"Cancelar Reserva");
+                    //JOptionPane.showMessageDialog(null,"Cancelar Reserva");
+                    
+                    MenuSecundario.cancelarReservacion();
                     break;
                     
             }
         } while (opcion != 3);
     }
-    
-    public void menuReporte () {
-        int opcion = 0;
-        do {
-            String [] opciones = {"Ocupacion del Hotel", "Habitaciones Disponibles", "Reservas Activas", "Volver al Menú Administracion"};
-            opcion = JOptionPane.showOptionDialog(null,
-            "Seleccione una opcion en el Sistema de Gestion Hotelero",
-            "Menu de gestion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones [0]);
-            
-            //Aquí van las funciones de cada opcion se pueden agregar aquí 
-            switch (opcion) {
-                case 0:
-                    JOptionPane.showMessageDialog(null, "Ocupacion del Hotel");
-                    break;
-                
-                case 1:
-                    JOptionPane.showMessageDialog(null,"Habitaciones Disponibles");
-                    break;
-                    
-                case 2:
-                    JOptionPane.showMessageDialog(null,"Reservas Activas");
-                    break;
-                    
-            }
-        } while (opcion != 3);
-    }
-    
-      
-    
+   
     public static void creacionHabitaciones() {
         
         if (MenuPrincipal.cantidadHabitaciones > 0) {

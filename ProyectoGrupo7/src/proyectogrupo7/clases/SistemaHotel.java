@@ -208,4 +208,8 @@ public class SistemaHotel {
     public static void agregarReserva(Reserva r) {
         reservas[contRes++] = r;
     }
+    
+    public static Cliente[] clientes = new Cliente[30];
+    public static int cantidadClientes = 0;
+    
 }

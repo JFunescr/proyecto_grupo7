@@ -77,8 +77,26 @@ public class MenuSecundario {
 
         String telefono = JOptionPane.showInputDialog("Teléfono:");
         if (telefono == null || telefono.trim().equals("")) return;
-
-        Cliente cliente = new Cliente(nombre, cedula, telefono);
+        
+        Cliente clienteExistente = null;
+        for (int i = 0; i < SistemaHotel.cantidadClientes; i++) {
+            if (SistemaHotel.clientes[i].getCedula().equals(cedula)) {
+                clienteExistente = SistemaHotel.clientes[i];
+                break;
+            }
+        }
+        
+        Cliente cliente;
+        if(clienteExistente != null) {
+            cliente = clienteExistente;
+        } else {
+            cliente = new Cliente(nombre, cedula, telefono);
+            if (SistemaHotel.cantidadClientes < SistemaHotel.clientes.length) {
+            SistemaHotel.clientes[SistemaHotel.cantidadClientes] = cliente;
+            SistemaHotel.cantidadClientes++;
+            }
+        }
+        
 
         String numeroHabStr = JOptionPane.showInputDialog("Número de habitación a reservar:");
         if (numeroHabStr == null) return;
@@ -121,7 +139,10 @@ public class MenuSecundario {
         JOptionPane.showMessageDialog(null, "Reservación completada.");
     }
 
-    private Habitacion buscarHabitacion(int numero) {
+    // ------------------------------------------------------------
+    // 2. BUSQUEDA DE HABITACION
+    // ------------------------------------------------------------
+    public static Habitacion buscarHabitacion(int numero) {
         for (Habitacion h : MenuPrincipal.habitaciones) {
             if (h != null && h.getNumero() == numero) {
                 return h;
@@ -133,7 +154,7 @@ public class MenuSecundario {
     // ------------------------------------------------------------
     // 3. CONSULTAR RESERVACIONES DEL CLIENTE
     // ------------------------------------------------------------
-    private void consultarReservasCliente() {
+    public static void consultarReservasCliente() {
 
         String ced = JOptionPane.showInputDialog("Digite su cédula:");
         if (ced == null) return;
@@ -163,7 +184,7 @@ public class MenuSecundario {
     // ------------------------------------------------------------
     // 4. CANCELAR RESERVACIÓN
     // ------------------------------------------------------------
-    private void cancelarReservacion() {
+    public static void cancelarReservacion() {
 
         String ced = JOptionPane.showInputDialog("Digite su cédula:");
         if (ced == null) return;

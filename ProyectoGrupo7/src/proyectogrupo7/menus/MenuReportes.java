@@ -49,7 +49,7 @@ public class MenuReportes {
 
    
 
-    private void reservasActivas() {
+    public void reservasActivas() {
         String texto = "Reservas activas:\n\n";
 
         for (Reserva r : SistemaHotel.reservas) {

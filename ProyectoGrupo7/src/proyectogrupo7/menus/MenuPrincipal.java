@@ -37,15 +37,6 @@ public class MenuPrincipal {
             switch (opcion) {
                 case 0:
                     JOptionPane.showMessageDialog(null, "Bienvenido al menu de Cliente");
-                    
-                    Cliente cliente = null;
-                    
-                    String nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre completo");
-                    String cedula = JOptionPane.showInputDialog(null, "Ingrese su numero de cédula");
-                    String contacto = JOptionPane.showInputDialog(null, "Ingrese su numero de contacto");
-
-                    cliente = new Cliente(nombre, cedula, contacto);
-                    JOptionPane.showMessageDialog(null, cliente);
                     menuSecundario.menuCliente();
                     break;
                 

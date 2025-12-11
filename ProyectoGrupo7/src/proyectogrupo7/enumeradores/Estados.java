@@ -4,10 +4,10 @@
  */
 package proyectogrupo7.enumeradores;
 
-/**
- *
- * @author jafet
- */
+
 public enum Estados {
     
+    INDIVIDUAL,
+    DOBLE,
+    SUITE
 }
